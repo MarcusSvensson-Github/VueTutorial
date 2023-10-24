@@ -15,15 +15,18 @@
             display: inline-block;
         }
         .box2{
-            background: sandybrown;
+            background: #91a6ad;
             margin: 20px;
             width: 150px;
             padding: 10px;
             text-align: center;
             display: inline-block;
         }
+        .fav{
+            background: #6d9f9f;
+        }
         .button{
-            background: aquamarine;
+            background: #cbbdca;
         }
     </style>
 </head>
@@ -50,6 +53,7 @@
         <br>
         <button class="button" v-if="!showMouseover" @click="showMouseover = !showMouseover">Show mouseover functions</button>
         <button class="button" v-else @click="showMouseover = !showMouseover"> hide mouseover functions</button>
+        
         <div v-if="showMouseover">
             <p>Event counter: {{eventTracker}}</p>
             <div class="box" @dblclick="eventTracker++">Dubbelklick event</div>
@@ -59,10 +63,21 @@
         </div>
         
         <div>
-            <div class="box2" v-for="book in books">
+            <div @dblclick="book.fav = !book.fav" class="box2" v-for="book in books" :class="{fav: book.fav}">
+                <div v-if="book.fav">
+                    <h1> Favorite! </h1>
+                </div>
                 <h3>{{book.title}}</h3>
                 <p>{{book.author}}</p>
-                
+            </div>
+            <div>
+                <h1>Filtered Favorite Books</h1>
+                <ul>
+                    <li v-for="book in filterFavorite">
+                        <h3>{{book.title}}</h3>
+                        <p>{{book.author}}</p>
+                    </li>
+                </ul>
             </div>
         </div>
         

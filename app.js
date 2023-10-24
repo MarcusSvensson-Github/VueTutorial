@@ -9,9 +9,9 @@ const app = Vue.createApp({
                 y: 0,
                 showMouseover: false,
                 books: [
-                    {author: "Dan brown", title: "da vinci koden"},
-                    {author: "ban brown", title: "c# koden"},
-                    {author: "stan brown", title: "koden"}
+                    {author: "Dan brown", title: "da vinci koden", fav: true},
+                    {author: "ban brown", title: "c# koden", fav: false},
+                    {author: "stan brown", title: "koden", fav: false}
                     ]
         }
 
@@ -24,6 +24,11 @@ const app = Vue.createApp({
             this.x = e.offsetX
             this.y = e.offsetY
         }
+    },
+    computed: {
+        filterFavorite(){
+                return this.books.filter((book) => book.fav)
+            }
     }
 })
 
