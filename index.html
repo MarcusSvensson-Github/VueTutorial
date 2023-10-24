@@ -14,6 +14,17 @@
             text-align: center;
             display: inline-block;
         }
+        .box2{
+            background: sandybrown;
+            margin: 20px;
+            width: 150px;
+            padding: 10px;
+            text-align: center;
+            display: inline-block;
+        }
+        .button{
+            background: aquamarine;
+        }
     </style>
 </head>
 
@@ -35,17 +46,29 @@
             <input v-bind="newTitle">
             <button @click="changeTitle('testtitel')"> change </button>
         </div>
-        <p>Event counter: {{eventTracker}}</p>
-    
-    <br>
-    
-    <div class="box" @dblclick="eventTracker++">Dubbelklick event</div>
-    <div class="box" @mouseenter="eventTracker++">Event när går in i låda</div>
-    <div class="box" @mouseout="eventTracker++">Event när du går ur</div>
-    <div class="box" @mousemove="positionHandler"> x - {{ x }},  y - {{ y }}</div>
+        
+        <br>
+        <button class="button" v-if="!showMouseover" @click="showMouseover = !showMouseover">Show mouseover functions</button>
+        <button class="button" v-else @click="showMouseover = !showMouseover"> hide mouseover functions</button>
+        <div v-if="showMouseover">
+            <p>Event counter: {{eventTracker}}</p>
+            <div class="box" @dblclick="eventTracker++">Dubbelklick event</div>
+            <div class="box" @mouseenter="eventTracker++">Event när går in i låda</div>
+            <div class="box" @mouseout="eventTracker++">Event när du går ur</div>
+            <div class="box" @mousemove="positionHandler"> x - {{ x }},  y - {{ y }}</div>
+        </div>
+        
+        <div>
+            <div class="box2" v-for="book in books">
+                <h3>{{book.title}}</h3>
+                <p>{{book.author}}</p>
+                
+            </div>
+        </div>
+        
+        
         
     </div>
-
     <script src="app.js"></script>
 </body>
 </html>
