@@ -4,7 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue live</title>
+    
+    <style>
+        .box{
+            background: lavender;
+            margin: 20px;
+            width: 100px;
+            padding: 50;
+            text-align: center;
+            display: inline-block;
+        }
+    </style>
 </head>
+
+
 <body>
     <h1>Vue tutorial</h1>
 
@@ -22,10 +35,16 @@
             <input v-bind="newTitle">
             <button @click="changeTitle('testtitel')"> change </button>
         </div>
-
+        <p>Event counter: {{eventTracker}}</p>
+    
+    <br>
+    
+    <div class="box" @dblclick="eventTracker++">Dubbelklick event</div>
+    <div class="box" @mouseenter="eventTracker++">Event när går in i låda</div>
+    <div class="box" @mouseout="eventTracker++">Event när du går ur</div>
+    <div class="box" @mousemove="positionHandler"> x - {{ x }},  y - {{ y }}</div>
         
     </div>
-
 
     <script src="app.js"></script>
 </body>
