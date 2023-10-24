@@ -1,6 +1,10 @@
 const app = Vue.createApp({
     data(){
-        return {title: "Welcome to the vue tutorial", age: 5, newTitle: ""}
+        return {title: "Welcome to the vue tutorial", 
+                age: 5, 
+                newTitle: "",
+                show: false
+        }
 
     },
     methods: {

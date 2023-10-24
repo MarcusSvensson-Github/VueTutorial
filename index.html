@@ -11,12 +11,19 @@
 
     <div id="app"> 
         <p>{{title}} - {{age}}</p>
+        
+        <button v-if="!show" @click="show = !show">Show</button>
+        <button v-else @click="show = !show">Hide</button>
+        
+        <div v-if="show">
+            <button v-on:click="age++"> increase age  </button>
+            <button @click="age--"> decrease age</button>
 
-        <button v-on:click="age++"> increase age  </button>
-        <button @click="age--"> decrease age</button>
+            <input v-bind="newTitle">
+            <button @click="changeTitle('testtitel')"> change </button>
+        </div>
 
-        <input v-bind="newTitle"> 
-        <button @click="changeTitle('testtitel')"> change </button>
+        
     </div>
 
 
